@@ -98,6 +98,10 @@ public:
         return make_pair(window->getWigth(), window->getHeight());
     }
 
+    pair<int, int> getPos(){
+        return make_pair(window->getX(), window->getY());
+    }
+
     void close() {
         delete window;
         window = nullptr;
@@ -114,8 +118,10 @@ int main() {
 
         if (command == "move") {
             int x, y;
+            pair<int, int> pos = monitor->getPos();
 
             while (true) {
+                cout << "Window position: x - " << pos.first << ", y - " << pos.second << endl << endl;
                 cout << R"(Enter the horizontal offset of the window ("digit" - right, "-digit" - left): )";
                 cin >> x;
                 cout << R"(Enter the vertical offset of the window ("digit" - down, "-digit" - up): )";
